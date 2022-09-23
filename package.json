@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "BookExchange/",
+  "homepage": "https://felipesekai.github.io/BookExchange/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
