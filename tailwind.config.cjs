@@ -4,6 +4,7 @@ module.exports = {
     './index.html',],
   theme: {
     extend: {
+      fontFamily: { sans: ['inter', 'sans-serif'] },
       colors: {
         secondary: "#745648"
       },
