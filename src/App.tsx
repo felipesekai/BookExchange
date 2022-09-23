@@ -19,6 +19,7 @@ function App() {
       </div>
 
       <ListBooks />
+      <ListBooks />
       <NewPost />
 
       <footer className='h-20  bg-white flex items-center justify-center text-black mt-7'>
