@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.0",
     "@radix-ui/react-popover": "1.0.0",
     "@radix-ui/react-scroll-area": "^1.0.0",
     "@trendyol-js/react-carousel": "^3.0.0",
