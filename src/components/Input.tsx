@@ -6,6 +6,6 @@ export const Input = ({ ...rest }: InputProps) => {
     return (
 
         <input {...rest}
-            className="bg-bgColorSecondary py-3 px-4 rounded text-sm placeholder:text-zinc-900" />)
+            className="bg-bgColor py-3 px-4 rounded text-sm text-white outline-yellow-900 placeholder:text-zinc-200 shadow-md border-none " />)
 
 }

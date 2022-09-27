@@ -2,8 +2,8 @@ import './styles/main.css';
 import Logo from './assets/Logo.svg';
 import { ListBooks } from './components/ListBooks';
 import { NewPost } from './components/NewPost';
-import { ModalLogin } from './components/ModalLogin';
-import * as Dialog from '@radix-ui/react-dialog';
+import { FormSignup } from './components/FormSignup';
+import { FromSign } from './components/FromSign';
 function App() {
 
 
@@ -13,10 +13,21 @@ function App() {
     text-lg text-white
     ">
       <div className='gap-2 flex justify-end items-end py-4 px-5'>
-        <ModalLogin>
-          <button className='bg-bgColorSecondary hover:bg-bgColor px-2 py-3 rounded shadow-sm'>Login</button>
-        </ModalLogin>
-        <button className='bg-white text-secondary hover:bg-slate-400 px-2 py-3 rounded shadow-sm'>Cadastrar-se</button>
+
+        {/* o formsing é o diolog com o formulario dentro */}
+        <FromSign>
+          <button className='bg-bgColorSecondary
+           hover:bg-bgColor px-8 py-3
+            text-sm font-bold rounded shadow-md'>Login</button>
+        </FromSign>
+
+        {/* o formsignup é o diolog com o formulario dentro */}
+        <FormSignup>
+          <button className='bg-white text-secondary
+         hover:bg-slate-400 px-8 py-3 text-sm font-bold 
+         rounded shadow-md'>Cadastrar-se</button>
+        </FormSignup>
+
       </div>
       <div className='flex justify-center'>
         <img className='max-w-xs xs:max-h-60' src={Logo} />
