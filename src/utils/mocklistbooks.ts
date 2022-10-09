@@ -6,7 +6,7 @@ import livro5 from '../assets/image5.png';
 export const BOOKS = [
     {
         title: "Arte da guerra",
-        author: '',
+        author: 'Sun Tzu (Autor), Pedro Manoel Soares (Tradutor)',
         imgUrl: livro1
     },
     {

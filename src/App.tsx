@@ -4,6 +4,7 @@ import { ListBooks } from './components/ListBooks';
 import { NewPost } from './components/NewPost';
 import { FormSignup } from './components/FormSignup';
 import { FromSign } from './components/FromSign';
+import { BookDetail } from './components/BookDetail';
 function App() {
 
 
@@ -34,8 +35,10 @@ function App() {
       </div>
 
       <ListBooks />
-      <ListBooks />
+      {/* <ListBooks /> */}
       <NewPost />
+
+
 
       <footer className='h-20  bg-white flex items-center justify-center text-black mt-7'>
         <text>Copyright © 2022 SEkai LTDA.</text>

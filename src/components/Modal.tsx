@@ -1,7 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
 
 
-interface Props extends Dialog.DialogProps {
+type Props = {
     title: string;
     children: React.ReactNode;
     open: React.ReactNode;
@@ -10,15 +10,11 @@ interface Props extends Dialog.DialogProps {
 export const Modal = ({ children, title, open }: Props) => {
     return (
         <Dialog.Root>
-            <Dialog.Trigger>
-                {open}
-            </Dialog.Trigger>
-
+            <Dialog.Trigger children={open} />
             <Dialog.Portal>
                 <Dialog.Overlay className='bg-black/60 inset-0 fixed' />
 
-                <Dialog.Content className='bg-bgColorSecondary py-8 px-10
-               
+                <Dialog.Content className='bg-bgColorSecondary py-8 px-10            
                 fixed top-1/2 left-1/2 
                 -translate-x-1/2 -translate-y-1/2
                 rounded-lg

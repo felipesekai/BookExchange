@@ -1,11 +1,8 @@
 import { Carousel } from '@trendyol-js/react-carousel';
 import { ArrowSquareRight, ArrowSquareLeft } from 'phosphor-react';
-import livro1 from '../../public/image1.png';
-import livro2 from '../../public/image2.png';
-import livro3 from '../../public/image3.png';
-import livro4 from '../../public/image4.png';
-import livro5 from '../../public/image5.png';
+import { BookDetail } from './BookDetail';
 import { BOOKS } from '../utils/mocklistbooks';
+
 
 export const ListBooks = () => {
 
@@ -20,8 +17,12 @@ export const ListBooks = () => {
                 leftArrow={<button><ArrowSquareLeft size={32} /></button>}
                 rightArrow={<button><ArrowSquareRight size={32} /></button>} infinite >
                 {BOOKS.map(book => {
-                    return <div className='max-w-[181px]'
-                    ><img className='max-h-[270px]' src={book.imgUrl} /></div>
+                    return <BookDetail
+                        title={book.title}
+                        author={book.author}
+                        bookImg={book.imgUrl}
+                        children={<button className='max-w-[181px]'
+                        ><img className='max-h-[270px]' src={book.imgUrl} /></button>} />
                 })}
             </Carousel>
 

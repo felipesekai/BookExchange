@@ -12,10 +12,11 @@ export const FormSignup = ({ children, }: Props) => {
 
             <form className='flex flex-col gap-5 mt-5'>
 
-                <Input placeholder='Nome' type='text' />
-                <Input placeholder='Email' type='email' />
-                <Input placeholder='Senha' type='password' />
-                <Input placeholder='Repita senha' type='password' />
+                <Input placeholder='Nome' type='text' required />
+                <Input placeholder='Email' type='email' required />
+                <Input placeholder='WhatsApp' type='tel' pattern="[0-9]{2}-[0-9]{3}-[0-9]{4}" required />
+                <Input placeholder='Senha' type='password' required />
+                <Input placeholder='Repita senha' type='password' required />
                 <footer className='flex gap-3 justify-end'>
                     <Dialog.Close className='text-white shadow-md py-3 px-5 rounded hover:bg-bgColor'>
                         Cancelar
