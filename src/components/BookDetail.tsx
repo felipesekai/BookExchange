@@ -9,11 +9,11 @@ interface Props {
     author?: string;
     publisher?: string;
     resume?: string;
-    bookImg?: string;
+    imgUrl?: string;
 }
 
 
-export function BookDetail({ children, title, author, publisher, resume, bookImg }: Props) {
+export function BookDetail({ children, title, author, publisher, resume, imgUrl: bookImg }: Props) {
     return (
         <Modal title="Informações do livro" open={children}>
 
@@ -35,7 +35,7 @@ export function BookDetail({ children, title, author, publisher, resume, bookImg
             flex gap-2
             flex-row 
             ml-auto
-            shadow-md mt-2 text-secondary font-bold">
+            shadow-md mt-5 text-secondary font-bold">
                 <PaperPlaneTilt size={24} />
                 Solicitar troca</button>
 

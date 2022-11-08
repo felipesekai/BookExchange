@@ -10,29 +10,40 @@ function App() {
 
   return (
     <div className="bg-bgColor
-    flex max-w-[1360px] flex-col
+    h-[100vh]
+    flex-1
+    flex flex-col
     text-lg text-white
     ">
-      <div className='gap-2 flex justify-end items-end py-4 px-5'>
+      {/* //header */}
+      <div className='gap-2 flex py-4 px-5'>
 
-        {/* o formsing é o diolog com o formulario dentro */}
-        <FromSign>
-          <button className='bg-bgColorSecondary
+
+        <div className='flex flex-1 gap-2 justify-end' >
+
+          {/* o formsing é o dialog com o formulario dentro */}
+          <FromSign>
+            <button className='bg-bgColorSecondary
            hover:bg-bgColor px-8 py-3
             text-sm font-bold rounded shadow-md'>Login</button>
-        </FromSign>
+          </FromSign>
 
-        {/* o formsignup é o diolog com o formulario dentro */}
-        <FormSignup>
-          <button className='bg-white text-secondary
+          {/* o formsignup é o dialog com o formulario dentro */}
+          <FormSignup>
+            <button className='bg-white text-secondary
          hover:bg-slate-400 px-8 py-3 text-sm font-bold 
-         rounded shadow-md'>Cadastrar-se</button>
-        </FormSignup>
+         rounded shadow-md'>Cadastrar</button>
+          </FormSignup>
+        </div>
+
+
 
       </div>
+      {/* logo */}
       <div className='flex justify-center'>
-        <img className='max-w-xs xs:max-h-60' src={Logo} />
+        <img className='xl:max-h-36 h-60 mt-4' src={Logo} />
       </div>
+
 
       <ListBooks />
       {/* <ListBooks /> */}
@@ -40,7 +51,7 @@ function App() {
 
 
 
-      <footer className='h-20  bg-white flex items-center justify-center text-black mt-7'>
+      <footer className='h-20 bg-white flex mt-auto items-center justify-center text-black '>
         <text>Copyright © 2022 SEkai LTDA.</text>
       </footer>
 
