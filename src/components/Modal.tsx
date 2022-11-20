@@ -4,12 +4,14 @@ import * as Dialog from '@radix-ui/react-dialog';
 type Props = {
     title: string;
     children: React.ReactNode;
-    open: React.ReactNode;
+    open?: React.ReactNode;
+    isOpen?: boolean;
+    handleOpenChange?: (b: boolean) => void;
 }
 
-export const Modal = ({ children, title, open }: Props) => {
+export const Modal = ({ children, title, open, isOpen, handleOpenChange }: Props) => {
     return (
-        <Dialog.Root>
+        <Dialog.Root open={isOpen} onOpenChange={handleOpenChange}>
             <Dialog.Trigger children={open} />
             <Dialog.Portal>
                 <Dialog.Overlay className='bg-black/60 inset-0 fixed' />

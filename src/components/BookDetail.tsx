@@ -15,19 +15,22 @@ interface Props {
 
 
 export function BookDetail({ children, title, author, publisher, resume, imgUrl: bookImg }: Props) {
+
+
     useEffect(() => {
         // console.log(title)
     }, [])
+
     return (
         <Modal title="Informações do livro" open={children}>
 
-            <div className="flex flex-row gap-3 mt-3">
-                <img className="w-52 h-80" src={bookImg ? bookImg : Img} alt={"Imagem do livro " + { title }} />
+            <div className="flex flex-col md:flex-row gap-3 mt-3">
+                <img className="md:w-52 md:h-80 w-24" src={bookImg ? bookImg : Img} alt={"Imagem do livro " + { title }} />
                 <div className="flex-column text-justify text-white">
-                    <h1 className="font-bold text-3xl">{title ? title : "Titulo do Livro"} </h1>
+                    <h1 className="font-bold md:text-3xl text-lg">{title ? title : "Titulo do Livro"} </h1>
                     <p><span className="font-bold capitalize">Autor: </span> {" " + author}</p>
                     <p><span className="font-bold capitalize">Editora:</span>{" " + publisher}</p>
-                    <p><span className="font-bold capitalize">Sinopse:</span>{" " + resume}</p>
+                    <p className="hidden lg:block"><span className="font-bold capitalize">Sinopse:</span>{" " + resume}</p>
                     <p><span className="font-bold capitalize">Livros de interesses:</span> </p>
 
                 </div>

@@ -3,7 +3,7 @@ import { ArrowSquareRight, ArrowSquareLeft, Books } from 'phosphor-react';
 import { BookDetail } from './BookDetail';
 import { BOOKS } from '../utils/mocklistbooks';
 import { useEffect, useState } from 'react';
-import { BooksModel } from '../utils/Types';
+import { BooksModel, PostsModel } from '../utils/Types';
 import { api } from '../services/api';
 import { useQuery } from 'react-query';
 
@@ -11,14 +11,14 @@ import { useQuery } from 'react-query';
 
 export const ListBooks = () => {
 
-    const [books, setBooks] = useState<BooksModel[]>([]);
+    // const [books, setBooks] = useState<BooksModel[]>([]);
 
     const { data, isFetching } = useQuery<BooksModel[]>(
-        "findAllBooks",
+        "findAllPosts",
         async () => {
-            const response = await api.get("books/v1");
-            const listBooks: BooksModel[] = response.data
-            console.log(listBooks)
+            const response = await api.get("posts/v1");
+            const posts: PostsModel[] = response.data
+            const listBooks: BooksModel[] = posts.map(post => { return post.bookID })
             return listBooks
         },
         {
@@ -26,23 +26,13 @@ export const ListBooks = () => {
         }
     );
 
-    // useEffect(() => {
-    //     api.get("books/v1").then((response) => {
-    //         setBooks(response.data)
-    //     }).catch((err) => {
-    //         window.alert(err.message)
-    //     }).finally(() => {
-    //         console.log(books)
-    //     })
-    // }, [])
-
     return (
         <div className='py-2 px-5'>
             <h2 className='font-bold ml-8'>Livros disponiveis para trocas</h2>
             {isFetching ? <div className="py-2 grid grid-flow-col grid-cols-6 ">
                 <p>Carregando...</p>
             </div> :
-                <Carousel className='mt-3 items-center'
+                data ? <Carousel className='mt-3 items-center'
                     show={5} slide={1}
                     leftArrow={<button><ArrowSquareLeft size={32} /></button>}
                     rightArrow={<button><ArrowSquareRight size={32} /></button>} infinite >
@@ -58,9 +48,12 @@ export const ListBooks = () => {
                                 alt={`Imagem do livro ${book.title}`}
                                 src={book.imgURL} />
                             </button>} />
-                    })}
-                </Carousel>
-            }
+                    })
+                    }
+                </Carousel> :
+                    <div>no books</div>}
+
+
 
 
 
