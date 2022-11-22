@@ -1,10 +1,9 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import { Input } from './Input';
-import { Modal } from './Modal';
+import {Input} from './Input';
 import {FormEvent, useCallback, useEffect, useState} from "react";
 import {api} from "../services/api";
 import {UserModel} from "../utils/Types";
-
+import {ModalLogin} from "./ModalLogin";
 
 
 interface Props {
@@ -42,7 +41,7 @@ export const FormSignup = ({ children, }: Props) => {
     },[formDate]);
 
     return (
-        <Modal title='cadastrar-se' open={children}>
+        <ModalLogin title='cadastrar-se' open={children}>
 
             <form onSubmit={handleSignUp} className='flex flex-col gap-5 mt-5'>
 
@@ -57,10 +56,10 @@ export const FormSignup = ({ children, }: Props) => {
 
                 <footer className='flex gap-3 justify-end'>
 
-                    <Dialog.Close className='text-white shadow-md py-3 px-5 rounded hover:bg-bgColor'>
+                    <Dialog.Close className='bg-white py-3 px-6 rounded-md text-secondary hover:bg-amber-50 shadow-md'>
                         Cancelar
                     </Dialog.Close>
-                    <button type='submit' className='bg-secondary py-3 px-5 rounded-md text-white hover:bg-bgColor shadow-md'
+                    <button type='submit' className='enabled:bg-white disabled:hidden py-3 px-6 rounded-md text-secondary hover:bg-amber-50 shadow-md  '
                             disabled={validatePassword}
                     >
                         Confirmar
@@ -69,7 +68,7 @@ export const FormSignup = ({ children, }: Props) => {
 
             </form>
 
-        </Modal>
+        </ModalLogin>
 
 
 

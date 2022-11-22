@@ -1,8 +1,8 @@
 import * as Dialog from '@radix-ui/react-dialog';
-import { Input } from './Input';
-import { Modal } from './Modal';
+import {Input} from './Input';
 import React, {FormEvent, useCallback, useState} from "react";
 import {api} from "../services/api";
+import {ModalLogin} from "./ModalLogin";
 
 export type Credentials = {
     email: string,
@@ -34,24 +34,24 @@ export const FromSign = ({ children }: formSignProps) => {
     },[formDate]);
 
     return (
-        <Modal title='Login' open={children}>
+        <ModalLogin title='Login' open={children}>
             <form className='flex flex-col gap-5 mt-5'
                   onSubmit={handleSign}
             >
 
-                <Input placeholder='Email' name='email' type='email' onChange={inputChange} />
-                <Input placeholder='Senha' name='password' type='password' onChange={inputChange} />
+                <Input placeholder='Email' name='email' type='email' onChange={inputChange} required />
+                <Input placeholder='Senha' name='password' type='password' onChange={inputChange} required />
                 <footer className='flex gap-3 justify-end'>
-                    <Dialog.Close className='text-white shadow-md py-3 px-5 rounded hover:bg-bgColor'>
+                    <Dialog.Close className='bg-white py-3 px-6 rounded-md text-secondary hover:bg-amber-50 shadow-md'>
                         Cancelar
                     </Dialog.Close>
-                    <button type='submit' className='bg-secondary py-3 px-5 rounded-md text-white hover:bg-bgColor shadow-md'>
+                    <button type='submit' className='bg-white py-3 px-6 rounded-md text-secondary hover:bg-amber-50 shadow-md'>
                         Confirmar
                     </button>
                 </footer>
 
             </form>
-        </Modal>
+        </ModalLogin>
 
 
     );
