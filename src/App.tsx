@@ -14,7 +14,6 @@ function App() {
   const [openNewPost, setOpenNewPost] = useState(false);
 
 
-
   return (
     <div className="bg-bgColor
     h-[100vh]

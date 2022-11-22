@@ -1,12 +1,9 @@
-import { Carousel } from '@trendyol-js/react-carousel';
-import { ArrowSquareRight, ArrowSquareLeft, Books } from 'phosphor-react';
-import { BookDetail } from './BookDetail';
-import { BOOKS } from '../utils/mocklistbooks';
-import { useEffect, useState } from 'react';
-import { BooksModel, PostsModel } from '../utils/Types';
-import { api } from '../services/api';
-import { useQuery } from 'react-query';
-
+import {Carousel} from '@trendyol-js/react-carousel';
+import {ArrowSquareLeft, ArrowSquareRight} from 'phosphor-react';
+import {BookDetail} from './BookDetail';
+import {BooksModel, PostsModel} from '../utils/Types';
+import {api} from '../services/api';
+import {useQuery} from 'react-query';
 
 
 export const ListBooks = () => {
