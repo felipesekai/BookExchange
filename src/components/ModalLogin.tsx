@@ -9,7 +9,7 @@ type Props = {
     handleOpenChange?: (b: boolean) => void;
 }
 
-export const Modal = ({ children, title, open, isOpen, handleOpenChange }: Props) => {
+export const ModalLogin = ({ children, title, open, isOpen, handleOpenChange }: Props) => {
     return (
         <Dialog.Root open={isOpen} onOpenChange={handleOpenChange}>
             <Dialog.Trigger children={open} />
@@ -17,11 +17,14 @@ export const Modal = ({ children, title, open, isOpen, handleOpenChange }: Props
                 <Dialog.Overlay className='bg-black/60 inset-0 fixed' />
 
                 <Dialog.Content className='bg-bgColorSecondary py-8 px-10            
-                fixed top-1/2 left-1/2 
-                -translate-x-1/2 -translate-y-1/2
-                rounded-lg
+                fixed
+                top-0
+                right-0
+                h-[100vh]
+                rounded-l-lg
                 shadow-lg
-                 shadow-black/25'>
+                shadow-black/25
+                '>
                     <Dialog.Title className='font-bold text-white'>{title.toUpperCase()}</Dialog.Title>
 
                     {children}

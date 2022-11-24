@@ -1,6 +1,7 @@
 import { Modal } from "./Modal";
 import Img from '../assets/image1.png';
 import { PaperPlaneTilt } from "phosphor-react";
+import { useEffect } from "react";
 
 
 interface Props {
@@ -14,17 +15,23 @@ interface Props {
 
 
 export function BookDetail({ children, title, author, publisher, resume, imgUrl: bookImg }: Props) {
+
+
+    useEffect(() => {
+        // console.log(title)
+    }, [])
+
     return (
         <Modal title="Informações do livro" open={children}>
 
-            <div className="flex flex-row gap-3 mt-3">
-                <img className="w-52 h-80" src={bookImg ? bookImg : Img} alt={"Imagem do livro " + { title }} />
+            <div className="flex flex-col md:flex-row gap-3 mt-3">
+                <img className="md:w-52 md:h-80 w-24" src={bookImg ? bookImg : Img} alt={"Imagem do livro " + { title }} />
                 <div className="flex-column text-justify text-white">
-                    <h1 className="font-bold text-3xl">{title ? title : "Titulo do Livro"} </h1>
-                    <p><span className="font-bold capitalize">Autor: </span> Sun Tzu (Autor), Pedro Manoel Soares (Tradutor)  </p>
-                    <p><span className="font-bold capitalize">Editora:</span> </p>
-                    <p><span className="font-bold capitalize">Sinopse:</span> "A guerra é um assunto de importância vital para o Estado; o reino da vida ou da morte; o caminho para a sobrevivência ou a ruína. É indispensável estudá-la profundamente." Sun Tzu</p>
-                    <p><span className="font-bold capitalize">Livros de interesses:</span> Sun Tzu</p>
+                    <h1 className="font-bold md:text-3xl text-lg">{title ? title : "Titulo do Livro"} </h1>
+                    <p><span className="font-bold capitalize">Autor: </span> {" " + author}</p>
+                    <p><span className="font-bold capitalize">Editora:</span>{" " + publisher}</p>
+                    <p className="hidden lg:block"><span className="font-bold capitalize">Sinopse:</span>{" " + resume}</p>
+                    <p><span className="font-bold capitalize">Livros de interesses:</span> </p>
 
                 </div>
             </div>

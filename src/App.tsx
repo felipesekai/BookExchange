@@ -4,8 +4,14 @@ import { ListBooks } from './components/ListBooks';
 import { NewPost } from './components/NewPost';
 import { FormSignup } from './components/FormSignup';
 import { FromSign } from './components/FromSign';
-import { BookDetail } from './components/BookDetail';
+import { useEffect, useState } from 'react';
+import { BooksModel } from './utils/Types';
+import { api } from './services/api';
+import { DialogNewPost } from './components/DialogNewPost';
+
 function App() {
+
+  const [openNewPost, setOpenNewPost] = useState(false);
 
 
   return (
@@ -36,18 +42,19 @@ function App() {
           </FormSignup>
         </div>
 
-
-
       </div>
       {/* logo */}
       <div className='flex justify-center'>
-        <img className='xl:max-h-36 h-60 mt-4' src={Logo} />
+        <img className='max-h-32 mt-4' src={Logo} />
       </div>
 
 
       <ListBooks />
       {/* <ListBooks /> */}
-      <NewPost />
+      <NewPost onChangeNewPost={setOpenNewPost} openNewPost={openNewPost} />
+      {/* dialog post */}
+      {openNewPost && <DialogNewPost isOpen={openNewPost} onOpenChange={setOpenNewPost} />}
+
 
 
 
