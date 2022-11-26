@@ -9,7 +9,7 @@ export function LabelInput({ title, name, ...rest }: Props) {
     return (
         <div className="flex flex-col">
             <label itemRef={name} className="text-white">{title}</label>
-            <Input name={name} type='text' {...rest} />
+            <Input name={name} type='text' {...rest} required />
         </div>
     );
 }

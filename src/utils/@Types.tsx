@@ -18,9 +18,17 @@ export type PostsModel = {
 
 export type UserModel = {
     id?: number;
-    name: number,
+    name: string,
     email: string,
     password: string,
+}
+export type Token = {
+    email: string,
+    authenticated: boolean;
+    created: Date,
+    expiration: Date,
+    accessToken: string,
+    refreshToken: string,
 }
 
 

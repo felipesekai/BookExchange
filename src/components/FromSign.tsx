@@ -1,8 +1,8 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import {Input} from './Input';
-import React, {FormEvent, useCallback, useState} from "react";
-import {api} from "../services/api";
+import React, {FormEvent, useCallback, useContext, useState} from "react";
 import {ModalLogin} from "./ModalLogin";
+import {AuthContext} from "../context/AuthProvider";
 
 export type Credentials = {
     email: string,
@@ -17,6 +17,9 @@ interface formSignProps extends Dialog.DialogProps {
 
 export const FromSign = ({ children }: formSignProps) => {
 
+    // @ts-ignore
+    const {sign} = useContext(AuthContext);
+
     const [formDate, setFormDate] = useState<Credentials>({} as Credentials)
 
     const inputChange = useCallback((event: FormEvent<HTMLInputElement>) => {
@@ -27,10 +30,8 @@ export const FromSign = ({ children }: formSignProps) => {
     const handleSign = useCallback((event: FormEvent<HTMLFormElement>)=>{
         event.preventDefault();
 
-        api.post("/auth/sign", formDate).then((response)=>{
-            console.log(response.data)
-            window.alert(response.data.email)
-        })
+        sign(formDate);
+
     },[formDate]);
 
     return (

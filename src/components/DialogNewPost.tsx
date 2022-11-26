@@ -1,12 +1,10 @@
-import * as Dialog from "@radix-ui/react-dialog";
-import { Modal } from "./Modal";
-import { BooksModel, PostsModel } from '../utils/Types';
-import { LabelInput } from "./LabelInput";
-import { FormNewBook } from "./FormNewBook";
-import { useCallback, useEffect, useState } from "react";
-import { FormNewPost } from "./FormNewPost";
-import { api } from "../services/api";
-import { formatDate } from "../utils/data-converter";
+import {Modal} from "./Modal";
+import {BooksModel, PostsModel} from '../utils/@Types';
+import {FormNewBook} from "./FormNewBook";
+import {useState} from "react";
+import {FormNewPost} from "./FormNewPost";
+import {formatDate} from "../utils/data-converter";
+
 interface Props {
     isOpen: boolean;
     onOpenChange: (b: boolean) => void;

@@ -1,5 +1,5 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { BooksModel, PostsModel } from '../utils/Types';
+import { BooksModel, PostsModel } from '../utils/@Types';
 import { useQuery } from "react-query";
 import { api } from "../services/api";
 import { useCallback, useState } from "react";

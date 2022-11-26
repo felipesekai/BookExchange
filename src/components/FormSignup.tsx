@@ -1,9 +1,9 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import {Input} from './Input';
-import {FormEvent, useCallback, useEffect, useState} from "react";
-import {api} from "../services/api";
-import {UserModel} from "../utils/Types";
+import React, {FormEvent, useCallback, useContext, useEffect, useState} from "react";
+import {UserModel} from "../utils/@Types";
 import {ModalLogin} from "./ModalLogin";
+import {AuthContext} from "../context/AuthProvider";
 
 
 interface Props {
@@ -15,6 +15,8 @@ export const FormSignup = ({ children, }: Props) => {
     const [formDate, setFormDate] = useState<UserModel>({} as UserModel);
     const [passwordRepeat, setPasswordRepeat] = useState<string>('');
     const [validatePassword, setValidatePassword] = useState<boolean>(true);
+    // @ts-ignore
+    const {signUp} = useContext(AuthContext)
 
     const inputChange = useCallback((event: FormEvent<HTMLInputElement>) => {
         const {value, name} = event.currentTarget
@@ -23,23 +25,25 @@ export const FormSignup = ({ children, }: Props) => {
         }else{
             setFormDate({...formDate, [name]: value});
         }
-        console.log(formDate)
     },[formDate]);
+    
+    const handleSignUp = useCallback((event: FormEvent<HTMLFormElement>)=>{
+        event.preventDefault();
+        signUp(formDate);
+
+    },[formDate]);
+    
 
     useEffect(() => {
 
         setValidatePassword(passwordRepeat.localeCompare(formDate.password) !== 0);
-        console.log(validatePassword);
+
+
     },[passwordRepeat, formDate]);
 
-    const handleSignUp = useCallback((event: FormEvent<HTMLFormElement>)=>{
-        event.preventDefault();
-        api.post("/auth/signup", formDate).then((response)=>{
-            console.log(response.data)
-            window.alert(response.data.email)
-        })
-    },[formDate]);
+   
 
+    // @ts-ignore
     return (
         <ModalLogin title='cadastrar-se' open={children}>
 
@@ -59,7 +63,7 @@ export const FormSignup = ({ children, }: Props) => {
                     <Dialog.Close className='bg-white py-3 px-6 rounded-md text-secondary hover:bg-amber-50 shadow-md'>
                         Cancelar
                     </Dialog.Close>
-                    <button type='submit' className='enabled:bg-white disabled:hidden py-3 px-6 rounded-md text-secondary hover:bg-amber-50 shadow-md  '
+                    <button type='submit' className='enabled:bg-white disabled:bg-secondary disabled:text-white py-3 px-6 rounded-md text-secondary hover:bg-amber-50 shadow-md  '
                             disabled={validatePassword}
                     >
                         Confirmar

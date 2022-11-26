@@ -1,7 +1,7 @@
 import {Carousel} from '@trendyol-js/react-carousel';
 import {ArrowSquareLeft, ArrowSquareRight} from 'phosphor-react';
 import {BookDetail} from './BookDetail';
-import {BooksModel, PostsModel} from '../utils/Types';
+import {BooksModel, PostsModel} from '../utils/@Types';
 import {api} from '../services/api';
 import {useQuery} from 'react-query';
 import {BOOKS} from "../utils/mocklistbooks";
