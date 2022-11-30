@@ -1,7 +1,8 @@
 import { Modal } from "./Modal";
 import Img from '../assets/image1.png';
 import { PaperPlaneTilt } from "phosphor-react";
-import { useEffect } from "react";
+import {useContext, useEffect} from "react";
+import {AuthContext} from "../context/AuthProvider";
 
 
 interface Props {
@@ -16,10 +17,12 @@ interface Props {
 
 export function BookDetail({ children, title, author, publisher, resume, imgUrl: bookImg }: Props) {
 
+    // @ts-ignore
+    const {user} = useContext(AuthContext);
 
-    useEffect(() => {
-        // console.log(title)
-    }, [])
+    // useEffect(() => {
+    //     // console.log(title)
+    // }, [])
 
     return (
         <Modal title="Informações do livro" open={children}>
@@ -35,14 +38,19 @@ export function BookDetail({ children, title, author, publisher, resume, imgUrl:
 
                 </div>
             </div>
-            <button className="bg-white   
+            <button className="
+            bg-white
             hover:bg-bgColor       
             hover:text-white
+            disabled:hidden
             px-3 py-4 rounded-md
             flex gap-2
             flex-row 
             ml-auto
-            shadow-md mt-5 text-secondary font-bold">
+            shadow-md mt-5 text-secondary font-bold
+            "
+            disabled={user===null}
+            >
                 <PaperPlaneTilt size={24} />
                 Solicitar troca</button>
 

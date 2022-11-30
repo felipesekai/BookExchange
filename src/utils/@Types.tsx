@@ -22,7 +22,7 @@ export type UserModel = {
     email: string,
     password: string,
 }
-export type Token = {
+export type UserTokenVO = {
     email: string,
     authenticated: boolean;
     created: Date,

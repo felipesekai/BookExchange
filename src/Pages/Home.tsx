@@ -48,9 +48,9 @@ function Home() {
                     :
                     <div className='flex flex-1 justify-end'>
 
-                        <p className='flex flex-col text-xl text-white font-bold'>
+                        <p className='flex flex-col items-end text-xl text-white font-bold'>
                             <span className='text-sm'>Bem-vindo!</span>
-                            {user.email}
+                            {user.name}
                         </p>
                     </div>
                 }
