@@ -1,4 +1,6 @@
 import { Book } from 'phosphor-react';
+import {useContext} from "react";
+import {AuthContext} from "../context/AuthProvider";
 
 interface Props {
     openNewPost: boolean,
@@ -7,6 +9,8 @@ interface Props {
 
 export const NewPost = ({ openNewPost, onChangeNewPost }: Props) => {
 
+        // @ts-ignore
+    const {user} = useContext(AuthContext);
 
     return (
         <div className="mx-auto my-7
@@ -15,8 +19,7 @@ export const NewPost = ({ openNewPost, onChangeNewPost }: Props) => {
          shadow-md
          ">
             <text className="sm:text-xl text-[12px]">Publique um novo anúncio</text>
-
-            <button
+            {user ?  <button
                 onClick={() => onChangeNewPost(!openNewPost)}
                 className="bg-white px-3 py-2 flex gap-2
             items-center text-secondary font-bold rounded-md
@@ -24,7 +27,10 @@ export const NewPost = ({ openNewPost, onChangeNewPost }: Props) => {
              hover:bg-slate-300 shadow-md">
                 <Book size={24} />
                 Nova Publicação
-            </button>
+            </button>:
+                <text className="sm:text-xl text-[12px]">é necessario ter uma conta para fazer uma publicação</text>
+            }
+
 
 
         </div>

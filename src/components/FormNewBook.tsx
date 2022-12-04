@@ -1,6 +1,7 @@
 import {BooksModel, PostsModel} from '../utils/@Types';
 import {LabelInput} from "./LabelInput";
 import {FormEvent, useCallback, useState} from "react";
+import {postNewBook} from "../services/BooksServices";
 
 interface Props {
     post?: PostsModel,
@@ -16,16 +17,17 @@ export function FormNewBook({ isOpen, onOpenChange }: Props) {
 
     const handleSubmit = useCallback((event: FormEvent<HTMLFormElement>)=> {
         event.preventDefault();
-        console.log(newBook)
+        // console.log(newBook);
+        postNewBook(newBook) && onOpenChange(false);
+
     },[newBook])
 
     const inputChange = useCallback((event: FormEvent<HTMLInputElement> | FormEvent<HTMLTextAreaElement>) => {
         const {value, name} = event.currentTarget
         setNewBook({...newBook, [name]: value});
     },[newBook]);
-    // useEffect(() => {
-    //     console.log("teste de renderização")
-    // }, [])
+
+
 
     return (
         // <Modal title='Publique um Livro' open={children}>
@@ -53,7 +55,7 @@ export function FormNewBook({ isOpen, onOpenChange }: Props) {
                     className='text-white shadow-md py-3 px-5 rounded hover:bg-bgColor'>
                     Cancelar
                 </button>
-                <button className='bg-secondary py-3 px-5 rounded-md text-white hover:bg-bgColor shadow-md'>
+                <button type={'submit'} className='bg-secondary py-3 px-5 rounded-md text-white hover:bg-bgColor shadow-md'>
                     Confirmar
                 </button>
             </footer>

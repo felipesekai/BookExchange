@@ -1,4 +1,4 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, useEffect, useState} from "react";
 import {UserModel, UserTokenVO} from "../utils/@Types";
 import {Credentials} from "../components/FromSign";
 import {api} from "../services/api";
@@ -45,9 +45,25 @@ const user_: UserModel = {
         api.get(`/auth/user/${email}`).then(response => {
             let data: UserModel = response.data
             setUser(data);
+            saveUser(data);
         });
 
     }
+
+    function saveUser(data: UserModel) {
+        localStorage.setItem('user', JSON.stringify(data));
+        localStorage.setItem('token', JSON.stringify(tokenVO));
+    }
+
+    useEffect(() => {
+       let userData =  localStorage.getItem('user')
+        let tokenData = localStorage.getItem( 'token');
+        if(tokenData && userData){
+            setTokenVO(JSON.parse(tokenData));
+            setUser(JSON.parse(userData));
+
+        }
+    },[]);
 
     return(
         <AuthContext.Provider value={{user, setUser, sign, signUp}}>
