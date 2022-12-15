@@ -18,7 +18,7 @@ export function FormNewBook({ isOpen, onOpenChange }: Props) {
     const handleSubmit = useCallback((event: FormEvent<HTMLFormElement>)=> {
         event.preventDefault();
         // console.log(newBook);
-        postNewBook(newBook) && onOpenChange(false);
+        postNewBook(newBook) && onOpenChange(true);
 
     },[newBook])
 
